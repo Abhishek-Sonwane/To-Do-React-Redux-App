@@ -7,6 +7,7 @@ const App = () => {
   const [darkmode, setDarkmode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isTaskView, setIsTaskView] = useState(false);
+  const [currentTask, setCurrentTask] = useState('');
 
   const toggleDarkMode = () => {
     setDarkmode(!darkmode);
@@ -22,7 +23,7 @@ const App = () => {
 
   return (
       <div
-        className={`w-full min-h-screen h-full flex items-center dark:bg-[#232323] ${
+        className={`w-full min-h-screen h-full flex  dark:bg-[#232323] ${
           darkmode && "dark"
         }`}
       >
@@ -32,8 +33,8 @@ const App = () => {
           darkmode={darkmode}
         />
         <Sidebar isSidebarOpen={isSidebarOpen} />
-        <Task toggleTaskView={toggleTaskView} isTaskView={isTaskView} />
-        <TaskSideBar isTaskView={isTaskView} toggleTaskView={toggleTaskView} />
+        <Task toggleTaskView={toggleTaskView} isTaskView={isTaskView} currentTask={currentTask} setCurrentTask={setCurrentTask}/>
+        <TaskSideBar isTaskView={isTaskView} toggleTaskView={toggleTaskView} currentTask={currentTask}/>
       </div>
   );
 };
